@@ -11,7 +11,7 @@ import Foundation
 // MARK: observeOn
 
 extension ObservableType {
-    
+
     /**
     Wraps the source sequence in order to run its observer callbacks on the specified scheduler.
     
@@ -27,8 +27,7 @@ extension ObservableType {
         -> Observable<E> {
         if let scheduler = scheduler as? SerialDispatchQueueScheduler {
             return ObserveOnSerialDispatchQueue(source: self.asObservable(), scheduler: scheduler)
-        }
-        else {
+        } else {
             return ObserveOn(source: self.asObservable(), scheduler: scheduler)
         }
     }
@@ -37,7 +36,7 @@ extension ObservableType {
 // MARK: subscribeOn
 
 extension ObservableType {
-    
+
     /**
     Wraps the source sequence in order to run its subscription and unsubscription logic on the specified 
     scheduler. 

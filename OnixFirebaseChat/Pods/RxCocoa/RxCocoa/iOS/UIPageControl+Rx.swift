@@ -7,15 +7,15 @@
 //
 
 #if os(iOS) || os(tvOS)
-    
+
 import Foundation
 #if !RX_NO_MODULE
 import RxSwift
 #endif
 import UIKit
-    
+
 extension Reactive where Base: UIPageControl {
-    
+
     /// Bindable sink for `currentPage` property.
     public var currentPage: UIBindingObserver<Base, Int> {
         return UIBindingObserver(UIElement: self.base) { controller, page in
@@ -23,5 +23,5 @@ extension Reactive where Base: UIPageControl {
         }
     }
 }
-    
+
 #endif

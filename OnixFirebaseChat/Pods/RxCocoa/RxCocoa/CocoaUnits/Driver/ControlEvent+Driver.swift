@@ -10,7 +10,7 @@ import Foundation
 #if !RX_NO_MODULE
 import RxSwift
 #endif
-    
+
 extension ControlEvent {
     /// Converts `ControlEvent` to `Driver` unit.
     ///

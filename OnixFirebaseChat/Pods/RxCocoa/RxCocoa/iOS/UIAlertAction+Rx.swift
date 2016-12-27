@@ -12,7 +12,7 @@ import Foundation
 
 import Foundation
 import UIKit
-    
+
 #if !RX_NO_MODULE
 import RxSwift
 #endif
@@ -25,7 +25,7 @@ extension Reactive where Base: UIAlertAction {
             alertAction.isEnabled = value
         }
     }
-    
+
 }
-    
+
 #endif

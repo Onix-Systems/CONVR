@@ -11,7 +11,6 @@ import Foundation
     import RxSwift
 #endif
 
-
 /**
  Unit that represents observable sequence with following properties:
 

@@ -12,8 +12,7 @@ import RxSwift
 #endif
 
 /// RxCocoa URL errors.
-public enum RxCocoaURLError
-    : Swift.Error {
+public enum RxCocoaURLError: Swift.Error {
     /// Unknown error occurred.
     case unknown
     /// Response is not NSHTTPURLResponse
@@ -77,8 +76,7 @@ fileprivate func convertResponseToString(_ data: Data!, _ response: URLResponse!
     if let response = response as? HTTPURLResponse {
         if 200 ..< 300 ~= response.statusCode {
             return "Success (\(ms)ms): Status \(response.statusCode)"
-        }
-        else {
+        } else {
             return "Failure (\(ms)ms): Status \(response.statusCode)"
         }
     }
@@ -114,8 +112,7 @@ extension Reactive where Base: URLSession {
 
             if Logging.URLRequests(request) {
                 d = Date()
-            }
-            else {
+            } else {
                d = nil
             }
 
@@ -126,7 +123,7 @@ extension Reactive where Base: URLSession {
                     print(convertURLRequestToCurlCommand(request))
                     print(convertResponseToString(data, response, error as NSError!, interval))
                 }
-                
+
                 guard let response = response, let data = data else {
                     observer.on(.error(error ?? RxCocoaURLError.unknown))
                     return
@@ -140,7 +137,6 @@ extension Reactive where Base: URLSession {
                 observer.on(.next(httpResponse, data))
                 observer.on(.completed)
             }
-
 
             let t = task
             t.resume()
@@ -168,8 +164,7 @@ extension Reactive where Base: URLSession {
         return response(request: request).map { (response, data) -> Data in
             if 200 ..< 300 ~= response.statusCode {
                 return data
-            }
-            else {
+            } else {
                 throw RxCocoaURLError.httpRequestFailed(response: response, data: data)
             }
         }
@@ -223,4 +218,3 @@ extension Reactive where Base: URLSession {
         return json(request: URLRequest(url: url))
     }
 }
-

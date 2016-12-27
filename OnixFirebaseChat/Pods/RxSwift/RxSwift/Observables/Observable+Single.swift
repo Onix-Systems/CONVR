@@ -11,7 +11,7 @@ import Foundation
 // MARK: distinct until changed
 
 extension ObservableType where E: Equatable {
-    
+
     /**
     Returns an observable sequence that contains only distinct contiguous elements according to equality operator.
 
@@ -51,7 +51,7 @@ extension ObservableType {
         -> Observable<E> {
         return self.distinctUntilChanged({ $0 }, comparer: comparer)
     }
-    
+
     /**
     Returns an observable sequence that contains only distinct contiguous elements according to the keySelector and the comparer.
 
@@ -100,7 +100,7 @@ extension ObservableType {
 // MARK: startWith
 
 extension ObservableType {
-    
+
     /**
     Prepends a sequence of values to an observable sequence.
 
@@ -118,7 +118,7 @@ extension ObservableType {
 // MARK: retry
 
 extension ObservableType {
-    
+
     /**
     Repeats the source observable sequence until it successfully terminates.
     
@@ -146,7 +146,7 @@ extension ObservableType {
         -> Observable<E> {
         return CatchSequence(sources: repeatElement(self.asObservable(), count: maxAttemptCount))
     }
-    
+
     /**
     Repeats the source observable sequence on error when the notifier emits a next value.
     If the source observable errors and the notifier completes, it will complete the source sequence.
@@ -179,7 +179,7 @@ extension ObservableType {
 // MARK: scan
 
 extension ObservableType {
-    
+
     /**
     Applies an accumulator function over an observable sequence and returns each intermediate result. The specified seed value is used as the initial accumulator value.
 

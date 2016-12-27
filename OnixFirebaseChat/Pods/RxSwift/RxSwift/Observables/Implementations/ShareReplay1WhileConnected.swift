@@ -10,9 +10,7 @@ import Foundation
 
 // optimized version of share replay for most common case
 final class ShareReplay1WhileConnected<Element>
-    : Observable<Element>
-    , ObserverType
-    , SynchronizedUnsubscribeType {
+    : Observable<Element>, ObserverType, SynchronizedUnsubscribeType {
 
     typealias DisposeKey = Bag<AnyObserver<Element>>.KeyType
 
@@ -28,12 +26,12 @@ final class ShareReplay1WhileConnected<Element>
         self._source = source
     }
 
-    override func subscribe<O : ObserverType>(_ observer: O) -> Disposable where O.E == E {
+    override func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
         _lock.lock(); defer { _lock.unlock() }
         return _synchronized_subscribe(observer)
     }
 
-    func _synchronized_subscribe<O : ObserverType>(_ observer: O) -> Disposable where O.E == E {
+    func _synchronized_subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
         if let element = self._element {
             observer.on(.next(element))
         }

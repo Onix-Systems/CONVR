@@ -13,9 +13,8 @@ import UIKit
 import RxSwift
 #endif
 
-
 extension Reactive where Base: UISwitch {
-    
+
     /**
     Reactive wrapper for `on` property.
     
@@ -33,8 +32,7 @@ extension Reactive where Base: UISwitch {
             }
         )
     }
-    
+
 }
 
 #endif
-

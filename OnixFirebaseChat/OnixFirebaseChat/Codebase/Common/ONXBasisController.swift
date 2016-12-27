@@ -49,7 +49,11 @@ final class ONXBasisController {
     }
 
     func enterApp() {
-        tabBarController.viewControllers = []
+        tabBarController.viewControllers = [
+            ONXChatsNavigationController(service:firebaseService),
+            ONXGroupsNavigationController(service:firebaseService),
+            ONXMoreNavigationController(service: firebaseService)
+        ]
     }
     func logout() {
         tabBarController.viewControllers = []

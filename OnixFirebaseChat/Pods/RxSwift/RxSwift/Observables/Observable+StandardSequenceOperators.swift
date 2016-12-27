@@ -11,7 +11,7 @@ import Foundation
 // MARK: filter aka where
 
 extension ObservableType {
-    
+
     /**
     Filters the elements of an observable sequence based on a predicate.
 
@@ -29,7 +29,7 @@ extension ObservableType {
 // MARK: takeWhile
 
 extension ObservableType {
-    
+
     /**
     Returns elements from an observable sequence as long as a specified condition is true.
     
@@ -62,7 +62,7 @@ extension ObservableType {
 // MARK: take
 
 extension ObservableType {
-    
+
     /**
     Returns a specified number of contiguous elements from the start of an observable sequence.
 
@@ -75,8 +75,7 @@ extension ObservableType {
         -> Observable<E> {
         if count == 0 {
             return Observable.empty()
-        }
-        else {
+        } else {
             return TakeCount(source: asObservable(), count: count)
         }
     }
@@ -85,7 +84,7 @@ extension ObservableType {
 // MARK: takeLast
 
 extension ObservableType {
-    
+
     /**
     Returns a specified number of contiguous elements from the end of an observable sequence.
      
@@ -102,11 +101,10 @@ extension ObservableType {
     }
 }
 
-
 // MARK: skip
 
 extension ObservableType {
-    
+
     /**
     Bypasses a specified number of elements in an observable sequence and then returns the remaining elements.
 
@@ -124,7 +122,7 @@ extension ObservableType {
 // MARK: SkipWhile
 
 extension ObservableType {
-   
+
     /**
     Bypasses elements in an observable sequence as long as a specified condition is true and then returns the remaining elements.
 
@@ -136,7 +134,7 @@ extension ObservableType {
     public func skipWhile(_ predicate: @escaping (E) throws -> Bool) -> Observable<E> {
         return SkipWhile(source: asObservable(), predicate: predicate)
     }
-   
+
     /**
     Bypasses elements in an observable sequence as long as a specified condition is true and then returns the remaining elements.
     The element's index is used in the logic of the predicate function.
@@ -154,7 +152,7 @@ extension ObservableType {
 // MARK: map aka select
 
 extension ObservableType {
-    
+
     /**
     Projects each element of an observable sequence into a new form.
     
@@ -182,7 +180,7 @@ extension ObservableType {
         return MapWithIndex(source: asObservable(), selector: selector)
     }
 }
-    
+
 // MARK: flatMap
 
 extension ObservableType {
@@ -257,7 +255,7 @@ extension ObservableType {
 // MARK: elementAt
 
 extension ObservableType {
-    
+
     /**
     Returns a sequence emitting only item _n_ emitted by an Observable
 
@@ -275,7 +273,7 @@ extension ObservableType {
 // MARK: single
 
 extension ObservableType {
-    
+
     /**
     The single operator is similar to first, but throws a `RxError.NoElements` or `RxError.MoreThanOneElement`
     if the source Observable does not emit exactly one item before successfully completing.
@@ -288,7 +286,7 @@ extension ObservableType {
         -> Observable<E> {
         return SingleAsync(source: asObservable())
     }
-    
+
     /**
     The single operator is similar to first, but throws a `RxError.NoElements` or `RxError.MoreThanOneElement`
     if the source Observable does not emit exactly one item before successfully completing.

@@ -17,8 +17,21 @@
 		3497C5BC1DF18AAD0009A9ED /* ONXFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3497C5BB1DF18AAD0009A9ED /* ONXFirebaseService.swift */; };
 		3497C5BE1DF18AD50009A9ED /* ONXReactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3497C5BD1DF18AD50009A9ED /* ONXReactive.swift */; };
 		3497C5C01DF18D510009A9ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3497C5BF1DF18D510009A9ED /* GoogleService-Info.plist */; };
+		34A7B7EC1DF8355900A9FB63 /* ONXGroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7B7EB1DF8355900A9FB63 /* ONXGroupListViewController.swift */; };
+		34A7B7EE1DF835B600A9FB63 /* ONXGroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7B7ED1DF835B600A9FB63 /* ONXGroupListViewModel.swift */; };
+		34A7B7F01DF84C0C00A9FB63 /* ONXAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7B7EF1DF84C0C00A9FB63 /* ONXAppearance.swift */; };
+		34A7B7F21DF8505500A9FB63 /* ONXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7B7F11DF8505500A9FB63 /* ONXColors.swift */; };
+		34A7B7F41DF8541000A9FB63 /* ONXCreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7B7F31DF8541000A9FB63 /* ONXCreateGroupViewController.swift */; };
+		34A7B7F61DF8544500A9FB63 /* ONXCreateGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A7B7F51DF8544500A9FB63 /* ONXCreateGroupViewModel.swift */; };
 		34E409A21DF1743C008BD8FB /* ONXBasisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E409A11DF1743C008BD8FB /* ONXBasisController.swift */; };
 		34E409A41DF174F1008BD8FB /* ONXAlertRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E409A31DF174F1008BD8FB /* ONXAlertRenderer.swift */; };
+		34FD53C61DF6DB030085408D /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34FD53C41DF6DB030085408D /* Chats.storyboard */; };
+		34FD53C91DF6DC900085408D /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34FD53C71DF6DC900085408D /* Groups.storyboard */; };
+		34FD53CB1DF6DDD60085408D /* ONXStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FD53CA1DF6DDD60085408D /* ONXStoryboard.swift */; };
+		34FD53CE1DF6DF370085408D /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34FD53CC1DF6DF370085408D /* More.storyboard */; };
+		34FD53D31DF6E00F0085408D /* ONXGroupsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FD53D21DF6E00F0085408D /* ONXGroupsNavigationController.swift */; };
+		34FD53D91DF6EB360085408D /* ONXChatsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FD53D81DF6EB360085408D /* ONXChatsNavigationController.swift */; };
+		34FD53DB1DF6EBCE0085408D /* ONXMoreNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FD53DA1DF6EBCE0085408D /* ONXMoreNavigationController.swift */; };
 		6E0745BF9DCF8A24D9183129 /* Pods_OnixFirebaseChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3327ABF445E0CA46A75F60EC /* Pods_OnixFirebaseChatTests.framework */; };
 		F532B15F6107E6859F587B85 /* Pods_OnixFirebaseChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9210C2B1FE20B20426ADF76B /* Pods_OnixFirebaseChat.framework */; };
 /* End PBXBuildFile section */
@@ -51,8 +64,21 @@
 		3497C5BD1DF18AD50009A9ED /* ONXReactive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXReactive.swift; path = Codebase/Common/Helpers/ONXReactive.swift; sourceTree = "<group>"; };
 		3497C5BF1DF18D510009A9ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3497C5C11DF191100009A9ED /* OnixFirebaseChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnixFirebaseChat.entitlements; sourceTree = "<group>"; };
+		34A7B7EB1DF8355900A9FB63 /* ONXGroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXGroupListViewController.swift; path = Codebase/ViewControllers/Groups/ONXGroupListViewController.swift; sourceTree = "<group>"; };
+		34A7B7ED1DF835B600A9FB63 /* ONXGroupListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXGroupListViewModel.swift; path = Codebase/ViewControllers/Groups/ONXGroupListViewModel.swift; sourceTree = "<group>"; };
+		34A7B7EF1DF84C0C00A9FB63 /* ONXAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXAppearance.swift; path = Codebase/Common/Helpers/ONXAppearance.swift; sourceTree = "<group>"; };
+		34A7B7F11DF8505500A9FB63 /* ONXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXColors.swift; path = Codebase/Common/Helpers/ONXColors.swift; sourceTree = "<group>"; };
+		34A7B7F31DF8541000A9FB63 /* ONXCreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXCreateGroupViewController.swift; path = Codebase/ViewControllers/Groups/ONXCreateGroupViewController.swift; sourceTree = "<group>"; };
+		34A7B7F51DF8544500A9FB63 /* ONXCreateGroupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXCreateGroupViewModel.swift; path = Codebase/ViewControllers/Groups/ONXCreateGroupViewModel.swift; sourceTree = "<group>"; };
 		34E409A11DF1743C008BD8FB /* ONXBasisController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXBasisController.swift; path = Codebase/Common/ONXBasisController.swift; sourceTree = "<group>"; };
 		34E409A31DF174F1008BD8FB /* ONXAlertRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXAlertRenderer.swift; path = Codebase/Common/Helpers/ONXAlertRenderer.swift; sourceTree = "<group>"; };
+		34FD53C51DF6DB030085408D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chats.storyboard; sourceTree = "<group>"; };
+		34FD53C81DF6DC900085408D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Groups.storyboard; sourceTree = "<group>"; };
+		34FD53CA1DF6DDD60085408D /* ONXStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXStoryboard.swift; path = Codebase/Common/Helpers/ONXStoryboard.swift; sourceTree = "<group>"; };
+		34FD53CD1DF6DF370085408D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
+		34FD53D21DF6E00F0085408D /* ONXGroupsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXGroupsNavigationController.swift; path = Codebase/ViewControllers/Groups/ONXGroupsNavigationController.swift; sourceTree = "<group>"; };
+		34FD53D81DF6EB360085408D /* ONXChatsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXChatsNavigationController.swift; path = Codebase/ViewControllers/Chats/ONXChatsNavigationController.swift; sourceTree = "<group>"; };
+		34FD53DA1DF6EBCE0085408D /* ONXMoreNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ONXMoreNavigationController.swift; path = Codebase/ViewControllers/More/ONXMoreNavigationController.swift; sourceTree = "<group>"; };
 		46127B92727B5DC8B4D4F768 /* Pods-OnixFirebaseChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnixFirebaseChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnixFirebaseChat/Pods-OnixFirebaseChat.release.xcconfig"; sourceTree = "<group>"; };
 		7AE1931FD954539E9DCA6B9E /* Pods-OnixFirebaseChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnixFirebaseChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnixFirebaseChatTests/Pods-OnixFirebaseChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		9210C2B1FE20B20426ADF76B /* Pods_OnixFirebaseChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnixFirebaseChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +164,9 @@
 				24103F0C1DF06DDC001D3ED4 /* LaunchScreen.storyboard */,
 				24103F0A1DF06DDC001D3ED4 /* Assets.xcassets */,
 				24103F071DF06DDC001D3ED4 /* Main.storyboard */,
+				34FD53C41DF6DB030085408D /* Chats.storyboard */,
+				34FD53C71DF6DC900085408D /* Groups.storyboard */,
+				34FD53CC1DF6DF370085408D /* More.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -156,6 +185,9 @@
 		34E4099C1DF173AF008BD8FB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				34FD53D11DF6DF680085408D /* Chats */,
+				34FD53D01DF6DF620085408D /* Groups */,
+				34FD53CF1DF6DF540085408D /* More */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -191,8 +223,39 @@
 			children = (
 				34E409A31DF174F1008BD8FB /* ONXAlertRenderer.swift */,
 				3497C5BD1DF18AD50009A9ED /* ONXReactive.swift */,
+				34FD53CA1DF6DDD60085408D /* ONXStoryboard.swift */,
+				34A7B7EF1DF84C0C00A9FB63 /* ONXAppearance.swift */,
+				34A7B7F11DF8505500A9FB63 /* ONXColors.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		34FD53CF1DF6DF540085408D /* More */ = {
+			isa = PBXGroup;
+			children = (
+				34FD53DA1DF6EBCE0085408D /* ONXMoreNavigationController.swift */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		34FD53D01DF6DF620085408D /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				34FD53D21DF6E00F0085408D /* ONXGroupsNavigationController.swift */,
+				34A7B7EB1DF8355900A9FB63 /* ONXGroupListViewController.swift */,
+				34A7B7ED1DF835B600A9FB63 /* ONXGroupListViewModel.swift */,
+				34A7B7F31DF8541000A9FB63 /* ONXCreateGroupViewController.swift */,
+				34A7B7F51DF8544500A9FB63 /* ONXCreateGroupViewModel.swift */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		34FD53D11DF6DF680085408D /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				34FD53D81DF6EB360085408D /* ONXChatsNavigationController.swift */,
+			);
+			name = Chats;
 			sourceTree = "<group>";
 		};
 		ED9236F0F10D5537802A3481 /* Frameworks */ = {
@@ -305,7 +368,10 @@
 			files = (
 				24103F0E1DF06DDC001D3ED4 /* LaunchScreen.storyboard in Resources */,
 				3497C5C01DF18D510009A9ED /* GoogleService-Info.plist in Resources */,
+				34FD53CE1DF6DF370085408D /* More.storyboard in Resources */,
+				34FD53C91DF6DC900085408D /* Groups.storyboard in Resources */,
 				24103F0B1DF06DDC001D3ED4 /* Assets.xcassets in Resources */,
+				34FD53C61DF6DB030085408D /* Chats.storyboard in Resources */,
 				24103F091DF06DDC001D3ED4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,12 +509,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34FD53CB1DF6DDD60085408D /* ONXStoryboard.swift in Sources */,
 				3497C5BC1DF18AAD0009A9ED /* ONXFirebaseService.swift in Sources */,
 				3497C5BE1DF18AD50009A9ED /* ONXReactive.swift in Sources */,
 				34E409A41DF174F1008BD8FB /* ONXAlertRenderer.swift in Sources */,
+				34FD53DB1DF6EBCE0085408D /* ONXMoreNavigationController.swift in Sources */,
+				34A7B7F21DF8505500A9FB63 /* ONXColors.swift in Sources */,
 				24103F041DF06DDC001D3ED4 /* AppDelegate.swift in Sources */,
+				34A7B7EC1DF8355900A9FB63 /* ONXGroupListViewController.swift in Sources */,
 				34E409A21DF1743C008BD8FB /* ONXBasisController.swift in Sources */,
+				34A7B7F41DF8541000A9FB63 /* ONXCreateGroupViewController.swift in Sources */,
+				34A7B7F61DF8544500A9FB63 /* ONXCreateGroupViewModel.swift in Sources */,
+				34A7B7EE1DF835B600A9FB63 /* ONXGroupListViewModel.swift in Sources */,
+				34FD53D31DF6E00F0085408D /* ONXGroupsNavigationController.swift in Sources */,
+				34A7B7F01DF84C0C00A9FB63 /* ONXAppearance.swift in Sources */,
 				346F282A1DF1D38F0049C4F0 /* Constants.swift in Sources */,
+				34FD53D91DF6EB360085408D /* ONXChatsNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +561,30 @@
 				24103F0D1DF06DDC001D3ED4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		34FD53C41DF6DB030085408D /* Chats.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34FD53C51DF6DB030085408D /* Base */,
+			);
+			name = Chats.storyboard;
+			sourceTree = "<group>";
+		};
+		34FD53C71DF6DC900085408D /* Groups.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34FD53C81DF6DC900085408D /* Base */,
+			);
+			name = Groups.storyboard;
+			sourceTree = "<group>";
+		};
+		34FD53CC1DF6DF370085408D /* More.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34FD53CD1DF6DF370085408D /* Base */,
+			);
+			name = More.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

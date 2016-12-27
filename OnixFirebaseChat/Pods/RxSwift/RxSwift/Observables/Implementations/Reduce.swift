@@ -11,24 +11,23 @@ import Foundation
 class ReduceSink<SourceType, AccumulateType, O: ObserverType> : Sink<O>, ObserverType {
     typealias ResultType = O.E
     typealias Parent = Reduce<SourceType, AccumulateType, ResultType>
-    
+
     private let _parent: Parent
     private var _accumulation: AccumulateType
-    
+
     init(parent: Parent, observer: O, cancel: Cancelable) {
         _parent = parent
         _accumulation = parent._seed
-        
+
         super.init(observer: observer, cancel: cancel)
     }
-    
+
     func on(_ event: Event<SourceType>) {
         switch event {
         case .next(let value):
             do {
                 _accumulation = try _parent._accumulator(_accumulation, value)
-            }
-            catch let e {
+            } catch let e {
                 forwardOn(.error(e))
                 dispose()
             }
@@ -41,8 +40,7 @@ class ReduceSink<SourceType, AccumulateType, O: ObserverType> : Sink<O>, Observe
                 forwardOn(.next(result))
                 forwardOn(.completed)
                 dispose()
-            }
-            catch let e {
+            } catch let e {
                 forwardOn(.error(e))
                 dispose()
             }
@@ -53,12 +51,12 @@ class ReduceSink<SourceType, AccumulateType, O: ObserverType> : Sink<O>, Observe
 class Reduce<SourceType, AccumulateType, ResultType> : Producer<ResultType> {
     typealias AccumulatorType = (AccumulateType, SourceType) throws -> AccumulateType
     typealias ResultSelectorType = (AccumulateType) throws -> ResultType
-    
+
     fileprivate let _source: Observable<SourceType>
     fileprivate let _seed: AccumulateType
     fileprivate let _accumulator: AccumulatorType
     fileprivate let _mapResult: ResultSelectorType
-    
+
     init(source: Observable<SourceType>, seed: AccumulateType, accumulator: @escaping AccumulatorType, mapResult: @escaping ResultSelectorType) {
         _source = source
         _seed = seed

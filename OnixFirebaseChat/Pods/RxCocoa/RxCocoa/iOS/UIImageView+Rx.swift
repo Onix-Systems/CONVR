@@ -15,12 +15,12 @@ import RxSwift
 import UIKit
 
 extension Reactive where Base: UIImageView {
-    
+
     /// Bindable sink for `image` property.
     public var image: UIBindingObserver<Base, UIImage?> {
         return image(transitionType: nil)
     }
-    
+
     /// Bindable sink for `image` property.
 
     /// - parameter transitionType: Optional transition type while setting the image (kCATransitionFade, kCATransitionMoveIn, ...)
@@ -34,8 +34,7 @@ extension Reactive where Base: UIImageView {
                     transition.type = transitionType
                     imageView.layer.add(transition, forKey: kCATransition)
                 }
-            }
-            else {
+            } else {
                 imageView.layer.removeAllAnimations()
             }
             imageView.image = image

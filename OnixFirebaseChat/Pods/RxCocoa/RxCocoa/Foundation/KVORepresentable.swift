@@ -27,4 +27,3 @@ extension KVORepresentable {
         self.init(KVOValue: KVOValue)
     }
 }
-

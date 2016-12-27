@@ -9,8 +9,6 @@
 
 import Foundation
 
-
-
 // 2
 
 extension Observable {
@@ -88,8 +86,6 @@ class CombineLatest2<E1, E2, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-
 
 // 3
 
@@ -175,8 +171,6 @@ class CombineLatest3<E1, E2, E3, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-
 
 // 4
 
@@ -269,8 +263,6 @@ class CombineLatest4<E1, E2, E3, E4, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-
 
 // 5
 
@@ -370,8 +362,6 @@ class CombineLatest5<E1, E2, E3, E4, E5, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-
 
 // 6
 
@@ -478,8 +468,6 @@ class CombineLatest6<E1, E2, E3, E4, E5, E6, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-
 
 // 7
 
@@ -593,8 +581,6 @@ class CombineLatest7<E1, E2, E3, E4, E5, E6, E7, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-
 
 // 8
 
@@ -715,5 +701,3 @@ class CombineLatest8<E1, E2, E3, E4, E5, E6, E7, E8, R> : Producer<R> {
         return (sink: sink, subscription: subscription)
     }
 }
-
-

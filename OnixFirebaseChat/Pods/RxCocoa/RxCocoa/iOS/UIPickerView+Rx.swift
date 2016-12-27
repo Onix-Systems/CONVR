@@ -7,7 +7,7 @@
 //
 
 #if os(iOS)
-    
+
     import Foundation
 #if !RX_NO_MODULE
     import RxSwift
@@ -21,7 +21,7 @@ extension Reactive where Base: UIPickerView {
     public var delegate: DelegateProxy {
         return RxPickerViewDelegateProxy.proxyForObject(base)
     }
-    
+
     public var itemSelected: ControlEvent<(Int, Int)> {
         let source = delegate
             .methodInvoked(#selector(UIPickerViewDelegate.pickerView(_:didSelectRow:inComponent:)))

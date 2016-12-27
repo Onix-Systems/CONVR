@@ -13,14 +13,14 @@ import Foundation
 /// This scheduler is suitable for cases when there is some bigger chunk of work that needs to be performed in background and you want to fine tune concurrent processing using `maxConcurrentOperationCount`.
 public class OperationQueueScheduler: ImmediateSchedulerType {
     public let operationQueue: OperationQueue
-    
+
     /// Constructs new instance of `OperationQueueScheduler` that performs work on `operationQueue`.
     ///
     /// - parameter operationQueue: Operation queue targeted to perform work on.
     public init(operationQueue: OperationQueue) {
         self.operationQueue = operationQueue
     }
-    
+
     /**
     Schedules an action to be executed recursively.
     
@@ -36,12 +36,11 @@ public class OperationQueueScheduler: ImmediateSchedulerType {
                 return
             }
 
-
             cancel.setDisposable(action(state))
         }
 
         self.operationQueue.addOperation(operation)
-        
+
         return cancel
     }
 

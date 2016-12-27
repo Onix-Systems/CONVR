@@ -9,17 +9,16 @@
 import Foundation
 
 class DelaySink<ElementType, O: ObserverType>
-    : Sink<O>
-    , ObserverType where O.E == ElementType {
+    : Sink<O>, ObserverType where O.E == ElementType {
     typealias E = O.E
     typealias Source = Observable<E>
     typealias DisposeKey = Bag<Disposable>.KeyType
-    
+
     private let _lock = NSRecursiveLock()
 
     private let _dueTime: RxTimeInterval
     private let _scheduler: SchedulerType
-    
+
     private let _sourceSubscription = SingleAssignmentDisposable()
     private let _cancelable = SerialDisposable()
 
@@ -32,7 +31,7 @@ class DelaySink<ElementType, O: ObserverType>
     // state
     private var _queue = Queue<(eventTime: RxTime, event: Event<E>)>(capacity: 0)
     private var _disposed = false
-    
+
     init(observer: O, dueTime: RxTimeInterval, scheduler: SchedulerType, cancel: Cancelable) {
         _dueTime = dueTime
         _scheduler = scheduler
@@ -67,14 +66,11 @@ class DelaySink<ElementType, O: ObserverType>
                 let nextEventToScheduleOriginalTime: Date? = ranAtLeastOnce && !_queue.isEmpty ? _queue.peek().eventTime : nil
 
                 if let _ = errorEvent {
-                }
-                else  {
+                } else {
                     if let _ = eventToForwardImmediatelly {
-                    }
-                    else if let _ = nextEventToScheduleOriginalTime {
+                    } else if let _ = nextEventToScheduleOriginalTime {
                         _running = false
-                    }
-                    else {
+                    } else {
                         _running = false
                         _active = false
                     }
@@ -85,8 +81,7 @@ class DelaySink<ElementType, O: ObserverType>
                 self.forwardOn(errorEvent)
                 self.dispose()
                 return
-            }
-            else {
+            } else {
                 if let eventToForwardImmediatelly = eventToForwardImmediatelly {
                     ranAtLeastOnce = true
                     self.forwardOn(eventToForwardImmediatelly)
@@ -94,21 +89,19 @@ class DelaySink<ElementType, O: ObserverType>
                         self.dispose()
                         return
                     }
-                }
-                else if let nextEventToScheduleOriginalTime = nextEventToScheduleOriginalTime {
+                } else if let nextEventToScheduleOriginalTime = nextEventToScheduleOriginalTime {
                     let elapsedTime = _scheduler.now.timeIntervalSince(nextEventToScheduleOriginalTime)
                     let interval = _dueTime - elapsedTime
                     let normalizedInterval = interval < 0.0 ? 0.0 : interval
                     scheduler.schedule((), dueTime: normalizedInterval)
                     return
-                }
-                else {
+                } else {
                     return
                 }
             }
         }
     }
-    
+
     func on(_ event: Event<E>) {
         if event.isStopEvent {
             _sourceSubscription.dispose()
@@ -138,7 +131,7 @@ class DelaySink<ElementType, O: ObserverType>
             }
         }
     }
-    
+
     func run(source: Source) -> Disposable {
         _sourceSubscription.setDisposable(source.subscribeSafe(self))
         return Disposables.create(_sourceSubscription, _cancelable)
@@ -149,14 +142,14 @@ class Delay<Element>: Producer<Element> {
     private let _source: Observable<Element>
     private let _dueTime: RxTimeInterval
     private let _scheduler: SchedulerType
-    
+
     init(source: Observable<Element>, dueTime: RxTimeInterval, scheduler: SchedulerType) {
         _source = source
         _dueTime = dueTime
         _scheduler = scheduler
     }
 
-    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
         let sink = DelaySink(observer: observer, dueTime: _dueTime, scheduler: _scheduler, cancel: cancel)
         let subscription = sink.run(source: _source)
         return (sink: sink, subscription: subscription)

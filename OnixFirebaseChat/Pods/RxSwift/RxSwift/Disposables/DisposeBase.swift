@@ -15,7 +15,7 @@ public class DisposeBase {
     let _ = Resources.incrementTotal()
 #endif
     }
-    
+
     deinit {
 #if TRACE_RESOURCES
     let _ = Resources.decrementTotal()

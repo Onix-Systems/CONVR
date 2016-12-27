@@ -15,7 +15,7 @@ import RxSwift
 import UIKit
 
 extension Reactive where Base: UIDatePicker {
-    
+
     /// Reactive wrapper for `date` property.
     public var date: ControlProperty<Date> {
         return UIControl.rx.value(
@@ -27,7 +27,7 @@ extension Reactive where Base: UIDatePicker {
             }
         )
     }
-    
+
 }
 
 #endif

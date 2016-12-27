@@ -15,7 +15,7 @@ import RxSwift
 #endif
 
 extension Reactive where Base: UIStepper {
-    
+
     /// Reactive wrapper for `value` property.
     public var value: ControlProperty<Double> {
         return UIControl.rx.value(
@@ -27,8 +27,7 @@ extension Reactive where Base: UIStepper {
             }
         )
     }
-    
+
 }
 
 #endif
-

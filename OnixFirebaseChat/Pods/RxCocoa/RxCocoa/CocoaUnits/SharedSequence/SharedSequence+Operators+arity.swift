@@ -12,8 +12,6 @@ import Foundation
 import RxSwift
 #endif
 
-
-
 // 2
 
 extension SharedSequence {
@@ -53,8 +51,6 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-
 
 // 3
 
@@ -97,8 +93,6 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-
 
 // 4
 
@@ -143,8 +137,6 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-
 
 // 5
 
@@ -191,8 +183,6 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-
 
 // 6
 
@@ -241,8 +231,6 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-
 
 // 7
 
@@ -293,8 +281,6 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-
 
 // 8
 
@@ -347,5 +333,3 @@ extension SharedSequence {
         return SharedSequence<O1.SharingStrategy, E>(source)
     }
 }
-
-

@@ -15,7 +15,7 @@ import RxSwift
 import UIKit
 
 extension Reactive where Base: UIControl {
-    
+
     /// Bindable sink for `enabled` property.
     public var isEnabled: UIBindingObserver<Base, Bool> {
         return UIBindingObserver(UIElement: self.base) { control, value in
@@ -46,7 +46,7 @@ extension Reactive where Base: UIControl {
                 control in
                 observer.on(.next())
             }
-            
+
             return Disposables.create(with: controlTarget.dispose)
         }.takeUntil(deallocated)
 
@@ -69,7 +69,7 @@ extension Reactive where Base: UIControl {
                         observer.on(.next(getter(control)))
                     }
                 }
-                
+
                 return Disposables.create(with: controlTarget.dispose)
             }
             .takeUntil((control as NSObject).rx.deallocated)

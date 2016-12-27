@@ -40,7 +40,7 @@
             self.value = Int32(value)
         }
     }
-    
+
     func >(lhs: AtomicInt, rhs: Int32) -> Bool {
         return lhs.value > rhs
     }
@@ -78,8 +78,7 @@
 
             if let newValue = value {
                 threadDictionary[key] = newValue
-            }
-            else {
+            } else {
                 threadDictionary[key] = nil
             }
 

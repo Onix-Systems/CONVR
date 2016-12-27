@@ -15,7 +15,7 @@ class MapSink<SourceType, O : ObserverType> : Sink<O>, ObserverType {
     typealias Element = SourceType
 
     private let _transform: Transform
-    
+
     init(transform: @escaping Transform, observer: O, cancel: Cancelable) {
         _transform = transform
         super.init(observer: observer, cancel: cancel)
@@ -27,8 +27,7 @@ class MapSink<SourceType, O : ObserverType> : Sink<O>, ObserverType {
             do {
                 let mappedElement = try _transform(element)
                 forwardOn(.next(mappedElement))
-            }
-            catch let e {
+            } catch let e {
                 forwardOn(.error(e))
                 dispose()
             }
@@ -48,7 +47,7 @@ class MapWithIndexSink<SourceType, O : ObserverType> : Sink<O>, ObserverType {
     typealias ResultType = O.E
     typealias Element = SourceType
     typealias Parent = MapWithIndex<SourceType, ResultType>
-    
+
     private let _selector: Selector
 
     private var _index = 0
@@ -64,8 +63,7 @@ class MapWithIndexSink<SourceType, O : ObserverType> : Sink<O>, ObserverType {
             do {
                 let mappedElement = try _selector(element, try incrementChecked(&_index))
                 forwardOn(.next(mappedElement))
-            }
-            catch let e {
+            } catch let e {
                 forwardOn(.error(e))
                 dispose()
             }
@@ -130,7 +128,7 @@ class Map<SourceType, ResultType>: Producer<ResultType> {
             return try selector(r)
         })
     }
-    
+
     override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == ResultType {
         let sink = MapSink(transform: _transform, observer: observer, cancel: cancel)
         let subscription = _source.subscribe(sink)

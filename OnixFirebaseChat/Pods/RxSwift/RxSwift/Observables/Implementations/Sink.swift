@@ -21,14 +21,14 @@ class Sink<O : ObserverType> : Disposable {
         _cancel = cancel
         _disposed = false
     }
-    
+
     final func forwardOn(_ event: Event<O.E>) {
         if _disposed {
             return
         }
         _observer.on(event)
     }
-    
+
     final func forwarder() -> SinkForward<O> {
         return SinkForward(forward: self)
     }
@@ -51,13 +51,13 @@ class Sink<O : ObserverType> : Disposable {
 
 class SinkForward<O: ObserverType>: ObserverType {
     typealias E = O.E
-    
+
     private let _forward: Sink<O>
-    
+
     init(forward: Sink<O>) {
         _forward = forward
     }
-    
+
     func on(_ event: Event<E>) {
         switch event {
         case .next:

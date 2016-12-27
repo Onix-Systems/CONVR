@@ -85,7 +85,7 @@ public protocol SharingStrategyProtocol {
 /**
 A type that can be converted to `SharedSequence`.
 */
-public protocol SharedSequenceConvertibleType : ObservableConvertibleType {
+public protocol SharedSequenceConvertibleType: ObservableConvertibleType {
     associatedtype SharingStrategy: SharingStrategyProtocol
 
     /**
@@ -99,7 +99,6 @@ extension SharedSequenceConvertibleType {
         return asSharedSequence().asObservable()
     }
 }
-
 
 extension SharedSequence {
 
@@ -188,4 +187,3 @@ extension SharedSequence where Element: SignedInteger {
         return SharedSequence(Observable.timer(dueTime, period: period, scheduler: S.scheduler))
     }
 }
-

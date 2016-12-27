@@ -10,12 +10,12 @@ import Foundation
 
 class Error<Element> : Producer<Element> {
     private let _error: Swift.Error
-    
+
     init(error: Swift.Error) {
         _error = error
     }
-    
-    override func subscribe<O : ObserverType>(_ observer: O) -> Disposable where O.E == Element {
+
+    override func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == Element {
         observer.on(.error(_error))
         return Disposables.create()
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AnonymousInvocable : InvocableType {
+struct AnonymousInvocable: InvocableType {
     private let _action: () -> ()
 
     init(_ action: @escaping () -> ()) {

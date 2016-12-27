@@ -8,20 +8,19 @@
 
 import Foundation
 
-
 class ElementAtSink<SourceType, O: ObserverType> : Sink<O>, ObserverType where O.E == SourceType {
     typealias Parent = ElementAt<SourceType>
-    
+
     let _parent: Parent
     var _i: Int
-    
+
     init(parent: Parent, observer: O, cancel: Cancelable) {
         _parent = parent
         _i = parent._index
-        
+
         super.init(observer: observer, cancel: cancel)
     }
-    
+
     func on(_ event: Event<SourceType>) {
         switch event {
         case .next(_):
@@ -31,7 +30,7 @@ class ElementAtSink<SourceType, O: ObserverType> : Sink<O>, ObserverType where O
                 forwardOn(.completed)
                 self.dispose()
             }
-            
+
             do {
                 let _ = try decrementChecked(&_i)
             } catch(let e) {
@@ -39,7 +38,7 @@ class ElementAtSink<SourceType, O: ObserverType> : Sink<O>, ObserverType where O
                 dispose()
                 return
             }
-            
+
         case .error(let e):
             forwardOn(.error(e))
             self.dispose()
@@ -49,18 +48,18 @@ class ElementAtSink<SourceType, O: ObserverType> : Sink<O>, ObserverType where O
             } else {
                 forwardOn(.completed)
             }
-            
+
             self.dispose()
         }
     }
 }
 
 class ElementAt<SourceType> : Producer<SourceType> {
-    
+
     let _source: Observable<SourceType>
     let _throwOnEmpty: Bool
     let _index: Int
-    
+
     init(source: Observable<SourceType>, index: Int, throwOnEmpty: Bool) {
         if index < 0 {
             rxFatalError("index can't be negative")
@@ -70,7 +69,7 @@ class ElementAt<SourceType> : Producer<SourceType> {
         self._index = index
         self._throwOnEmpty = throwOnEmpty
     }
-    
+
     override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == SourceType {
         let sink = ElementAtSink(parent: self, observer: observer, cancel: cancel)
         let subscription = _source.subscribeSafe(sink)

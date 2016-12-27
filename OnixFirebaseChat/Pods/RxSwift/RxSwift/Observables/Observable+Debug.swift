@@ -11,7 +11,7 @@ import Foundation
 // MARK: debug
 
 extension ObservableType {
-    
+
     /**
     Prints received events for all observers on standard output.
 

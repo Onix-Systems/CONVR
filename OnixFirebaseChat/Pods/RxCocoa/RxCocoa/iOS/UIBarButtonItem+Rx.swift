@@ -16,7 +16,7 @@ import RxSwift
 fileprivate var rx_tap_key: UInt8 = 0
 
 extension Reactive where Base: UIBarButtonItem {
-    
+
     /// Bindable sink for `enabled` property.
     public var isEnabled: UIBindingObserver<Base, Bool> {
         return UIBindingObserver(UIElement: self.base) { UIElement, value in
@@ -40,19 +40,18 @@ extension Reactive where Base: UIBarButtonItem {
             .takeUntil(self.deallocated)
             .share()
         }
-        
+
         return ControlEvent(events: source)
     }
 }
 
-
 @objc
 class BarButtonItemTarget: RxTarget {
     typealias Callback = () -> Void
-    
+
     weak var barButtonItem: UIBarButtonItem?
     var callback: Callback!
-    
+
     init(barButtonItem: UIBarButtonItem, callback: @escaping () -> Void) {
         self.barButtonItem = barButtonItem
         self.callback = callback
@@ -60,23 +59,23 @@ class BarButtonItemTarget: RxTarget {
         barButtonItem.target = self
         barButtonItem.action = #selector(BarButtonItemTarget.action(_:))
     }
-    
+
     override func dispose() {
         super.dispose()
 #if DEBUG
         MainScheduler.ensureExecutingOnScheduler()
 #endif
-        
+
         barButtonItem?.target = nil
         barButtonItem?.action = nil
-        
+
         callback = nil
     }
-    
+
     func action(_ sender: AnyObject) {
         callback()
     }
-    
+
 }
 
 #endif

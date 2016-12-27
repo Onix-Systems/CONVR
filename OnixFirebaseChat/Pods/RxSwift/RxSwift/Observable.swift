@@ -14,21 +14,21 @@ import Foundation
 public class Observable<Element> : ObservableType {
     /// Type of elements in sequence.
     public typealias E = Element
-    
+
     init() {
 #if TRACE_RESOURCES
         let _ = Resources.incrementTotal()
 #endif
     }
-    
+
     public func subscribe<O: ObserverType>(_ observer: O) -> Disposable where O.E == E {
         abstractMethod()
     }
-    
+
     public func asObservable() -> Observable<E> {
         return self
     }
-    
+
     deinit {
 #if TRACE_RESOURCES
         let _ = Resources.decrementTotal()
@@ -43,4 +43,3 @@ public class Observable<Element> : ObservableType {
         return Map(source: self, transform: selector)
     }
 }
-

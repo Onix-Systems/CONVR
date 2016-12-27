@@ -25,7 +25,7 @@ extension ObservableConvertibleType {
             .catchErrorJustReturn(onErrorJustReturn)
         return SharedSequence(source)
     }
-    
+
     /**
     Converts anything convertible to `Observable` to `SharedSequence` unit.
     

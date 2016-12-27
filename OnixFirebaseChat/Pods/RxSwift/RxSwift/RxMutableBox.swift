@@ -11,8 +11,8 @@ import Foundation
 /// Creates mutable reference wrapper for any type.
 class RxMutableBox<T> : CustomDebugStringConvertible {
     /// Wrapped value
-    var value : T
-    
+    var value: T
+
     /// Creates reference wrapper for `value`.
     ///
     /// - parameter value: Value to wrap.

@@ -33,9 +33,9 @@ It is suitable for storing small number of elements.
 struct Bag<T> : CustomDebugStringConvertible {
     /// Type of identifier for inserted elements.
     typealias KeyType = BagKey
-    
+
     typealias Entry = (key: BagKey, value: T)
- 
+
     fileprivate var _nextKey: BagKey = BagKey(rawValue: 0)
 
     // data
@@ -52,7 +52,7 @@ struct Bag<T> : CustomDebugStringConvertible {
     /// Creates new empty `Bag`.
     init() {
     }
-    
+
     /**
     Inserts `value` into bag.
     
@@ -82,16 +82,16 @@ struct Bag<T> : CustomDebugStringConvertible {
         }
 
         _dictionary![key] = element
-        
+
         return key
     }
-    
+
     /// - returns: Number of elements in bag.
     var count: Int {
         let dictionaryCount: Int = _dictionary?.count ?? 0
         return (_value0 != nil ? 1 : 0) + dictionaryCount
     }
-    
+
     /// Removes all elements from bag and clears capacity.
     mutating func removeAll() {
         _key0 = nil
@@ -99,7 +99,7 @@ struct Bag<T> : CustomDebugStringConvertible {
 
         _dictionary?.removeAll(keepingCapacity: false)
     }
-    
+
     /**
     Removes element with a specific `key` from bag.
     
@@ -124,7 +124,7 @@ struct Bag<T> : CustomDebugStringConvertible {
 
 extension Bag {
     /// A textual representation of `self`, suitable for debugging.
-    var debugDescription : String {
+    var debugDescription: String {
         return "\(self.count) elements in Bag"
     }
 }

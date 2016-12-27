@@ -85,7 +85,7 @@ and override in UITableView
 
 
 */
-public protocol DelegateProxyType : AnyObject {
+public protocol DelegateProxyType: AnyObject {
     /// Creates new proxy for target object.
     static func createProxyForObject(_ object: AnyObject) -> AnyObject
 
@@ -94,13 +94,13 @@ public protocol DelegateProxyType : AnyObject {
     /// - parameter object: Object that can have assigned delegate proxy.
     /// - returns: Assigned delegate proxy or `nil` if no delegate proxy is assigned.
     static func assignedProxyFor(_ object: AnyObject) -> AnyObject?
-    
+
     /// Assigns proxy to object.
     ///
     /// - parameter object: Object that can have assigned delegate proxy.
     /// - parameter proxy: Delegate proxy object to assign to `object`.
     static func assignProxy(_ proxy: AnyObject, toObject object: AnyObject)
-    
+
     /// Returns designated delegate property for object.
     ///
     /// Objects can have multiple delegate properties.
@@ -120,7 +120,7 @@ public protocol DelegateProxyType : AnyObject {
     /// - parameter toObject: Object that has delegate property.
     /// - parameter delegate: Delegate value.
     static func setCurrentDelegate(_ delegate: AnyObject?, toObject object: AnyObject)
-    
+
     /// Returns reference of normal delegate that receives all forwarded messages
     /// through `self`.
     ///
@@ -161,8 +161,7 @@ extension DelegateProxyType {
         let proxy: Self
         if let existingProxy = maybeProxy {
             proxy = existingProxy
-        }
-        else {
+        } else {
             proxy = Self.createProxyForObject(object) as! Self
             Self.assignProxy(proxy, toObject: object)
             assert(Self.assignedProxyFor(object) === proxy)
@@ -177,7 +176,7 @@ extension DelegateProxyType {
             assert(Self.currentDelegateFor(object) === proxy)
             assert(proxy.forwardToDelegate() === currentDelegate)
         }
-        
+
         return proxy
     }
 
@@ -192,7 +191,7 @@ extension DelegateProxyType {
         weak var weakForwardDelegate: AnyObject? = forwardDelegate
 
         let proxy = Self.proxyForObject(object)
-        
+
         assert(proxy.forwardToDelegate() === nil, "This is a feature to warn you that there is already a delegate (or data source) set somewhere previously. The action you are trying to perform will clear that delegate (data source) and that means that some of your features that depend on that delegate (data source) being set will likely stop working.\n" +
             "If you are ok with this, try to set delegate (data source) to `nil` in front of this operation.\n" +
             " This is the source object value: \(object)\n" +
@@ -200,21 +199,21 @@ extension DelegateProxyType {
             "Hint: Maybe delegate was already set in xib or storyboard and now it's being overwritten in code.\n")
 
         proxy.setForwardToDelegate(forwardDelegate, retainDelegate: retainDelegate)
-        
+
         // refresh properties after delegate is set
         // some views like UITableView cache `respondsToSelector`
         Self.setCurrentDelegate(nil, toObject: object)
         Self.setCurrentDelegate(proxy, toObject: object)
-        
+
         assert(proxy.forwardToDelegate() === forwardDelegate, "Setting of delegate failed:\ncurrent:\n\(proxy.forwardToDelegate())\nexpected:\n\(forwardDelegate)")
-        
+
         return Disposables.create {
             MainScheduler.ensureExecutingOnScheduler()
-            
+
             let delegate: AnyObject? = weakForwardDelegate
-            
+
             assert(delegate == nil || proxy.forwardToDelegate() === delegate, "Delegate was changed from time it was first set. Current \(proxy.forwardToDelegate()), and it should have been \(proxy)")
-            
+
             proxy.setForwardToDelegate(nil, retainDelegate: retainDelegate)
         }
     }
@@ -240,9 +239,9 @@ extension ObservableType {
                 if let object = object {
                     assert(proxy === P.currentDelegateFor(object), "Proxy changed from the time it was first set.\nOriginal: \(proxy)\nExisting: \(P.currentDelegateFor(object))")
                 }
-                
+
                 binding(proxy, event)
-                
+
                 switch event {
                 case .error(let error):
                     bindingErrorToInterface(error)
@@ -253,7 +252,7 @@ extension ObservableType {
                     break
                 }
             }
-            
+
         return Disposables.create(subscription, disposable)
     }
 }

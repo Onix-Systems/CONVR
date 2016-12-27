@@ -23,6 +23,6 @@ import Foundation
                 viewController.title = title
             }
         }
-    
+
     }
 #endif

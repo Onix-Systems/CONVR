@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: throttle
 extension ObservableType {
-    
+
     /**
     Returns an Observable that emits the first and the latest item emitted by the source Observable during sequential time windows of a specified duration.
     
@@ -46,7 +46,7 @@ extension ObservableType {
 // MARK: sample
 
 extension ObservableType {
-   
+
     /**
     Samples the source observable sequence using a sampler observable sequence producing sampling ticks.
     
@@ -129,7 +129,7 @@ extension ObservableType {
 // MARK: skip
 
 extension ObservableType {
-    
+
     /**
     Skips elements for the specified duration from the start of the observable source sequence, using the specified scheduler to run timers.
 
@@ -167,7 +167,7 @@ extension ObservableType {
 // MARK: delaySubscription
 
 extension ObservableType {
-    
+
     /**
     Time shifts the observable sequence by delaying the subscription with the specified relative time duration, using the specified scheduler to run timers.
 
@@ -208,7 +208,7 @@ extension ObservableType {
 // MARK: window
 
 extension ObservableType {
-    
+
     /**
      Projects each element of an observable sequence into a window that is completed when either it’s full or a given amount of time has elapsed.
 
@@ -228,7 +228,7 @@ extension ObservableType {
 // MARK: timeout
 
 extension ObservableType {
-    
+
     /**
      Applies a timeout policy for each element in the observable sequence. If the next element isn't received within the specified timeout duration starting from its predecessor, a TimeoutError is propagated to the observer.
 
@@ -262,7 +262,7 @@ extension ObservableType {
 // MARK: delay
 
 extension ObservableType {
-    
+
     /**
      Returns an observable sequence by the source observable sequence shifted forward in time by a specified delay. Error events from the source observable sequence are not delayed.
      

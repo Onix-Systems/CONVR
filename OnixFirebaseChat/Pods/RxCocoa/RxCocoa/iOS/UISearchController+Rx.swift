@@ -10,12 +10,12 @@ import Foundation
 
 #if os(iOS)
     import Foundation
-    
+
 #if !RX_NO_MODULE
     import RxSwift
 #endif
     import UIKit
-    
+
 @available(iOS 8.0, *)
 extension Reactive where Base: UISearchController {
     /// Reactive wrapper for `delegate`.
@@ -51,14 +51,14 @@ extension Reactive where Base: UISearchController {
             .methodInvoked(#selector(UISearchControllerDelegate.willDismissSearchController(_:)))
             .map {_ in}
     }
-    
+
     /// Reactive wrapper for `delegate` message.
     public var willPresent: Observable<Void> {
         return delegate
             .methodInvoked( #selector(UISearchControllerDelegate.willPresentSearchController(_:)))
             .map {_ in}
     }
-    
+
 }
-    
+
 #endif

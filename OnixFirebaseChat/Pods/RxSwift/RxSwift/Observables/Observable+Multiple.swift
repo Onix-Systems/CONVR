@@ -45,7 +45,7 @@ extension Observable {
 // MARK: switch
 
 extension ObservableType where E : ObservableConvertibleType {
-    
+
     /**
     Transforms an observable sequence of observable sequences into an observable sequence
     producing values only from the most recent observable sequence.
@@ -118,7 +118,7 @@ extension Observable {
 }
 
 extension ObservableType where E : ObservableConvertibleType {
-    
+
     /**
     Concatenates all inner observable sequences, as long as the previous observable sequence terminated successfully.
 
@@ -134,7 +134,7 @@ extension ObservableType where E : ObservableConvertibleType {
 // MARK: merge
 
 extension ObservableType where E : ObservableConvertibleType {
-    
+
     /**
     Merges elements from all observable sequences in the given enumerable sequence into a single observable sequence.
 
@@ -163,7 +163,7 @@ extension ObservableType where E : ObservableConvertibleType {
 // MARK: catch
 
 extension ObservableType {
-    
+
     /**
     Continues an observable sequence that is terminated by an error with the observable sequence produced by the handler.
 
@@ -189,7 +189,7 @@ extension ObservableType {
         -> Observable<E> {
         return Catch(source: asObservable(), handler: { _ in Observable.just(element) })
     }
-    
+
 }
 
 extension Observable {
@@ -209,7 +209,7 @@ extension Observable {
 // MARK: takeUntil
 
 extension ObservableType {
-    
+
     /**
     Returns the elements from the source observable sequence until the other observable sequence produces an element.
 
@@ -227,7 +227,7 @@ extension ObservableType {
 // MARK: skipUntil
 
 extension ObservableType {
-    
+
     /**
     Returns the elements from the source observable sequence that are emitted after the other observable sequence produces an element.
 
@@ -245,7 +245,7 @@ extension ObservableType {
 // MARK: amb
 
 extension ObservableType {
-    
+
     /**
     Propagates the observable sequence that reacts first.
 
@@ -280,7 +280,7 @@ extension Observable {
 // withLatestFrom
 
 extension ObservableType {
-    
+
     /**
     Merges two observable sequences into one observable sequence by combining each element from self with the latest element from the second source, if any.
 

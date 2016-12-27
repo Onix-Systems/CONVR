@@ -9,10 +9,7 @@
 import Foundation
 
 class DebounceSink<O: ObserverType>
-    : Sink<O>
-    , ObserverType
-    , LockOwnerType
-    , SynchronizedOnType {
+    : Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
     typealias Element = O.E
     typealias ParentType = Debounce<Element>
 
@@ -48,7 +45,6 @@ class DebounceSink<O: ObserverType>
             _id = _id &+ 1
             let currentId = _id
             _value = element
-
 
             let scheduler = _parent._scheduler
             let dueTime = _parent._dueTime
@@ -100,5 +96,5 @@ class Debounce<Element> : Producer<Element> {
         let subscription = sink.run()
         return (sink: sink, subscription: subscription)
     }
-    
+
 }

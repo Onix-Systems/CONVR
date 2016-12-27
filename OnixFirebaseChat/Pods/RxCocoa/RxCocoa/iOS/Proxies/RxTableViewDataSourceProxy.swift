@@ -16,24 +16,19 @@ import RxSwift
 
 let tableViewDataSourceNotSet = TableViewDataSourceNotSet()
 
-class TableViewDataSourceNotSet
-    : NSObject
-    , UITableViewDataSource {
+class TableViewDataSourceNotSet: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         rxAbstractMethodWithMessage(dataSourceNotSet)
     }
 }
 
 /// For more information take a look at `DelegateProxyType`.
-public class RxTableViewDataSourceProxy
-    : DelegateProxy
-    , UITableViewDataSource
-    , DelegateProxyType {
+public class RxTableViewDataSourceProxy: DelegateProxy, UITableViewDataSource, DelegateProxyType {
 
     /// Typed parent object.
     public weak fileprivate(set) var tableView: UITableView?
@@ -46,7 +41,7 @@ public class RxTableViewDataSourceProxy
     fileprivate class Counter {
         var hasObservers: Bool = false
     }
-    
+
     fileprivate class CachedCommitForRowAt {
         let sequence: Observable<[Any]>
         let counter: Counter
@@ -59,7 +54,7 @@ public class RxTableViewDataSourceProxy
             self.sequence = sequence
             self.counter = counter
         }
-        
+
         static func createFor(commitForRowAt: Observable<[Any]>, proxy: RxTableViewDataSourceProxy) -> CachedCommitForRowAt {
             let counter = Counter()
 
@@ -98,7 +93,7 @@ public class RxTableViewDataSourceProxy
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return (_requiredMethodsDataSource ?? tableViewDataSourceNotSet).tableView(tableView, cellForRowAt: indexPath)
     }
-    
+
     // MARK: proxy
 
     /// For more information take a look at `DelegateProxyType`.

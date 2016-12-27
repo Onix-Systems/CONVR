@@ -15,10 +15,7 @@ import RxSwift
 #endif
 
 /// For more information take a look at `DelegateProxyType`.
-public class RxTabBarDelegateProxy
-    : DelegateProxy
-    , UITabBarDelegate
-    , DelegateProxyType {
+public class RxTabBarDelegateProxy: DelegateProxy, UITabBarDelegate, DelegateProxyType {
 
     /// For more information take a look at `DelegateProxyType`.
     public class func currentDelegateFor(_ object: AnyObject) -> AnyObject? {

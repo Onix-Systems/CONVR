@@ -24,8 +24,7 @@ class ObservableSequenceSink<S: Sequence, O: ObserverType> : Sink<O> where S.Ite
             if let next = mutableIterator.0.next() {
                 self.forwardOn(.next(next))
                 recurse(mutableIterator)
-            }
-            else {
+            } else {
                 self.forwardOn(.completed)
             }
         }
@@ -41,7 +40,7 @@ class ObservableSequence<S: Sequence> : Producer<S.Iterator.Element> {
         _scheduler = scheduler
     }
 
-    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == E {
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == E {
         let sink = ObservableSequenceSink(parent: self, observer: observer, cancel: cancel)
         let subscription = sink.run()
         return (sink: sink, subscription: subscription)

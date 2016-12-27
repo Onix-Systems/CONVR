@@ -14,10 +14,8 @@ import UIKit
 import RxSwift
 #endif
 
-    
-    
 extension UITextView {
-    
+
     /// Factory method that enables subclasses to implement their own `delegate`.
     ///
     /// - returns: Instance of delegate proxy that wraps `delegate`.
@@ -31,7 +29,7 @@ extension Reactive where Base: UITextView {
     public var text: ControlProperty<String?> {
         let source: Observable<String?> = Observable.deferred { [weak textView = self.base] in
             let text = textView?.text
-            
+
             let textChanged = textView?.textStorage
                 // This project uses text storage notifications because
                 // that's the only way to catch autocorrect changes
@@ -45,7 +43,7 @@ extension Reactive where Base: UITextView {
                     return textView?.textStorage.string
                 }
                 ?? Observable.empty()
-            
+
             return textChanged
                 .startWith(text)
         }
@@ -58,7 +56,7 @@ extension Reactive where Base: UITextView {
                 textView.text = text
             }
         }
-        
+
         return ControlProperty(values: source, valueSink: bindingObserver)
     }
 

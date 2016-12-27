@@ -15,7 +15,7 @@ import RxSwift
 import UIKit
 
 extension Reactive where Base: UITextField {
-    
+
     /// Reactive wrapper for `text` property.
     public var text: ControlProperty<String?> {
         return UIControl.rx.value(
@@ -32,7 +32,7 @@ extension Reactive where Base: UITextField {
             }
         )
     }
-    
+
 }
 
 #endif

@@ -11,7 +11,7 @@ import Foundation
 // MARK: multicast
 
 extension ObservableType {
-    
+
     /**
     Multicasts the source sequence notifications through the specified subject to the resulting connectable observable. 
     
@@ -55,7 +55,7 @@ extension ObservableType {
 // MARK: publish
 
 extension ObservableType {
-    
+
     /**
     Returns a connectable observable sequence that shares a single subscription to the underlying sequence. 
     
@@ -73,7 +73,7 @@ extension ObservableType {
 // MARK: replay
 
 extension ObservableType {
-    
+
     /**
     Returns a connectable observable sequence that shares a single subscription to the underlying sequence replaying bufferSize elements.
 
@@ -107,7 +107,7 @@ extension ObservableType {
 // MARK: refcount
 
 extension ConnectableObservableType {
-    
+
     /**
     Returns an observable sequence that stays connected to the source as long as there is at least one subscription to the observable sequence.
 
@@ -123,7 +123,7 @@ extension ConnectableObservableType {
 // MARK: share
 
 extension ObservableType {
-    
+
     /**
     Returns an observable sequence that shares a single subscription to the underlying sequence.
     
@@ -141,7 +141,7 @@ extension ObservableType {
 // MARK: shareReplay
 
 extension ObservableType {
-    
+
     /**
     Returns an observable sequence that shares a single subscription to the underlying sequence, and immediately upon subscription replays maximum number of elements in buffer.
     
@@ -156,8 +156,7 @@ extension ObservableType {
         -> Observable<E> {
         if bufferSize == 1 {
             return ShareReplay1(source: self.asObservable())
-        }
-        else {
+        } else {
             return self.replay(bufferSize).refCount()
         }
     }

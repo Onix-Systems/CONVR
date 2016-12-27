@@ -9,23 +9,21 @@
 import Foundation
 
 class SamplerSink<O: ObserverType, ElementType, SampleType>
-    : ObserverType
-    , LockOwnerType
-    , SynchronizedOnType where O.E == ElementType {
+    : ObserverType, LockOwnerType, SynchronizedOnType where O.E == ElementType {
     typealias E = SampleType
-    
+
     typealias Parent = SampleSequenceSink<O, SampleType>
-    
+
     fileprivate let _parent: Parent
 
     var _lock: NSRecursiveLock {
         return _parent._lock
     }
-    
+
     init(parent: Parent) {
         _parent = parent
     }
-    
+
     func on(_ event: Event<E>) {
         synchronizedOn(event)
     }
@@ -37,7 +35,7 @@ class SamplerSink<O: ObserverType, ElementType, SampleType>
                 if _parent._parent._onlyNew {
                     _parent._element = nil
                 }
-                
+
                 _parent.forwardOn(.next(element))
             }
 
@@ -62,35 +60,32 @@ class SamplerSink<O: ObserverType, ElementType, SampleType>
 }
 
 class SampleSequenceSink<O: ObserverType, SampleType>
-    : Sink<O>
-    , ObserverType
-    , LockOwnerType
-    , SynchronizedOnType {
+    : Sink<O>, ObserverType, LockOwnerType, SynchronizedOnType {
     typealias Element = O.E
     typealias Parent = Sample<Element, SampleType>
-    
+
     fileprivate let _parent: Parent
 
     let _lock = NSRecursiveLock()
-    
+
     // state
     fileprivate var _element = nil as Element?
     fileprivate var _atEnd = false
-    
+
     fileprivate let _sourceSubscription = SingleAssignmentDisposable()
-    
+
     init(parent: Parent, observer: O, cancel: Cancelable) {
         _parent = parent
         super.init(observer: observer, cancel: cancel)
     }
-    
+
     func run() -> Disposable {
         _sourceSubscription.setDisposable(_parent._source.subscribe(self))
         let samplerSubscription = _parent._sampler.subscribe(SamplerSink(parent: self))
-        
+
         return Disposables.create(_sourceSubscription, samplerSubscription)
     }
-    
+
     func on(_ event: Event<Element>) {
         synchronizedOn(event)
     }
@@ -107,7 +102,7 @@ class SampleSequenceSink<O: ObserverType, SampleType>
             _sourceSubscription.dispose()
         }
     }
-    
+
 }
 
 class Sample<Element, SampleType> : Producer<Element> {
@@ -120,7 +115,7 @@ class Sample<Element, SampleType> : Producer<Element> {
         _sampler = sampler
         _onlyNew = onlyNew
     }
-    
+
     override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
         let sink = SampleSequenceSink(parent: self, observer: observer, cancel: cancel)
         let subscription = sink.run()
